@@ -1,5 +1,5 @@
 export const data = [
-    {
+    {title:'template 1',
         category:'React js',
         snippet:`function Nav() {
     return (<nav className='w-3/48 flex flex-row flex-wrap bg-gray-900 border-r border-gray-400 gap-8'>
@@ -46,9 +46,9 @@ export const data = [
 }
 
 export default Nav;`
-,tags:['react','js', 'reactjs' ,'react js']
+,tags:['react','js', 'reactjs' ,'react js'],lang:'react js'
 ,id:1
-    },  {
+    },  {title:'template 2',
         category:'React js',
         snippet:`function Nav() {
     return (<nav className='w-3/48 flex flex-row flex-wrap bg-gray-900 border-r border-gray-400 gap-8'>
@@ -95,9 +95,9 @@ export default Nav;`
 }
 
 export default Nav;`
-,tags:['react','js', 'reactjs' ,'react js']
+,tags:['react','js', 'reactjs' ,'react js'],lang:'react js'
 ,id:2
-    },  {
+    },  {title:'template 3',
         category:'React js',
         snippet:`function Nav() {
     return (<nav className='w-3/48 flex flex-row flex-wrap bg-gray-900 border-r border-gray-400 gap-8'>
@@ -144,9 +144,9 @@ export default Nav;`
 }
 
 export default Nav;`
-,tags:['react','js', 'reactjs' ,'react js']
+,tags:['react','js', 'reactjs' ,'react js'],lang:'react js'
 ,id:3
-    },  {
+    },  {title:'template 4',
         category:'React js',
         snippet:`function Nav() {
     return (<nav className='w-3/48 flex flex-row flex-wrap bg-gray-900 border-r border-gray-400 gap-8'>
@@ -193,7 +193,7 @@ export default Nav;`
 }
 
 export default Nav;`
-,tags:['react','js', 'reactjs' ,'react js']
+,tags:['react','js', 'reactjs' ,'react js'],lang:'react js'
 ,id:4
     },
 ]
