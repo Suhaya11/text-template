@@ -46,7 +46,7 @@ export const data = [
 }
 
 export default Nav;`
-,tags:['react','js', 'reactjs' ,'react js'],lang:'react js'
+,tags:['react','js', 'reactjs' ,'react js'],lang:'jsx'
 ,id:1
     },  {title:'template 2',
         category:'React js',
@@ -95,7 +95,7 @@ export default Nav;`
 }
 
 export default Nav;`
-,tags:['react','js', 'reactjs' ,'react js'],lang:'react js'
+,tags:['react','js', 'reactjs' ,'react js'],lang:'jsx'
 ,id:2
     },  {title:'template 3',
         category:'React js',
@@ -144,7 +144,7 @@ export default Nav;`
 }
 
 export default Nav;`
-,tags:['react','js', 'reactjs' ,'react js'],lang:'react js'
+,tags:['react','js', 'reactjs' ,'react js'],lang:'jsx'
 ,id:3
     },  {title:'template 4',
         category:'React js',
@@ -193,7 +193,7 @@ export default Nav;`
 }
 
 export default Nav;`
-,tags:['react','js', 'reactjs' ,'react js'],lang:'react js'
+,tags:['react','js', 'reactjs' ,'react js'],lang:'jsx'
 ,id:4
     },
 ]
