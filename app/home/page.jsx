@@ -1,5 +1,6 @@
+import TemplateCard from "../../src/components/TemplateCard"
 function Home() {
-    return ( <h2>w</h2> );
+    return <TemplateCard section={'My'}/>
 }
 
 export default Home;

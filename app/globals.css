@@ -8,3 +8,7 @@
 color:gray;
 margin-left: 10px;
 }
+.postCardActions{
+  @apply absolute  left-0 top-0 w-full h-full border;
+  background: rgba(0, 0, 0, 0.617)
+}
