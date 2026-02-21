@@ -1,58 +1,54 @@
-
-import { BiCodeAlt} from "react-icons/bi";
-
-
-import { FaStar, FaV } from "react-icons/fa6";
+import { BiCodeAlt, BiLogOut } from "react-icons/bi";
+import { FaStar } from "react-icons/fa6";
 import { HiOutlineHome } from "react-icons/hi";
-
 import { MdHistory } from "react-icons/md";
+import Link from "next/link";
+
+function NavItem({ icon: Icon, title, href = "#", active = false }) {
+  return (
+    <Link
+      href={href}
+      title={title}
+      className={`p-3 rounded-xl transition-all group flex items-center justify-center ${
+        active
+          ? "bg-green-600/20 text-green-500 shadow-inner"
+          : "text-gray-400 hover:bg-gray-800 hover:text-white"
+      }`}
+    >
+      <Icon size={24} className={active ? "text-green-500" : "group-hover:scale-110 transition-transform"} />
+    </Link>
+  );
+}
 
 function Nav() {
-    return (<nav className='w-3/48 flex flex-row flex-wrap bg-gray-900 border-r border-gray-400 gap-8'>
-<div className=" flex flex-row  my-0 mx-auto flex-wrap  flex flex-wrap flex-row gap-10">
-      <i className='bg-green-600 w-fit my-0 mx-auto px-2 mt-6 rounded-lg h-fit '>
-       <BiCodeAlt size={30}/>
-  </i>
-</div>
-<div className="flex flex-row flex-wrap gap-18">
-<div className=" flex flex-row flex-wrap mb-6 flex flex-wrap flex-row gap-10">
- <i title="Home" className=' w-fit my-0 mx-auto px-2 rounded-lg h-fit '>
-    {/* <HiHomeModern/> */}
-    {/* <HiHome/>
-     */}
-     <HiOutlineHome size={30} color="green"></HiOutlineHome>
-  </i> <i  title="Favourites" className=' w-fit my-0 mx-auto px-2 rounded-lg h-fit '>
-    <FaStar size={30}  fill="white"/>
-    
-  </i> <i title="History" className='bg-green-600 w-fit my-0 mx-auto px-2 rounded-lg h-fit '>
-<MdHistory size={30}/>
-  </i>
+  return (
+    <nav className="w-20 min-h-screen flex flex-col bg-gray-900 border-r border-gray-800 py-6 items-center sticky top-0">
+      {/* Logo */}
+      <div className="bg-green-600 p-2.5 rounded-xl shadow-lg shadow-green-900/20 mb-10 cursor-pointer hover:bg-green-500 transition-colors">
+        <BiCodeAlt size={28} className="text-white" />
+      </div>
 
+      {/* Main Nav */}
+      <div className="flex flex-col gap-4 flex-1">
+        <NavItem icon={HiOutlineHome} title="Home" href="/" active={true} />
+        <NavItem icon={FaStar} title="Favourites" />
+        <NavItem icon={MdHistory} title="History" />
+        
+        <div className="w-8 h-px bg-gray-800 my-2 self-center" />
 
-</div>
-<div className="w-fit mb-2 mt-2 mx-auto px-2  h-fit flex flex-row flex-wrap gap-8">
-      <i title="React js" className='w-fit my-0 mx-auto px-2 rounded-lg h-fit '>
-      <BiCodeAlt size={30}/>
-  </i>
+        <NavItem icon={BiCodeAlt} title="React JS" />
+        <NavItem icon={BiCodeAlt} title="TypeScript" />
+        <NavItem icon={BiCodeAlt} title="JavaScript" />
+        <NavItem icon={BiCodeAlt} title="HTML" />
+        <NavItem icon={BiCodeAlt} title="CSS" />
+      </div>
 
-      <i title="React TypeScript" className=' w-fit my-0 mx-auto px-2 rounded-lg h-fit '>
-   <BiCodeAlt size={30}/>
-  </i>
-
-      <i title="JavaScript" className=' w-fit my-0 mx-auto px-2 rounded-lg h-fit '>
-   <BiCodeAlt size={30}/>
-  </i>
-
-      <i title="HTML" className=' w-fit my-0 mx-auto px-2 rounded-lg h-fit '>
-   <BiCodeAlt size={30}/>
-  </i>
-
-      <i title="CSS" className=' w-fit my-0 mx-auto px-2 rounded-lg h-fit '>
-    <BiCodeAlt size={30}/>
-  </i>
-</div>
-</div>
-</nav>  );
+      {/* Footer Nav */}
+      <div className="mt-auto">
+        <NavItem icon={BiLogOut} title="Logout" href="/login" />
+      </div>
+    </nav>
+  );
 }
 
 export default Nav;

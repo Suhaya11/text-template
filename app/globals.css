@@ -1,14 +1,32 @@
 @import "tailwindcss";
-*{
 
+@theme {
+  --color-green-500: #22c55e;
+  --color-green-600: #16a34a;
+}
+
+body {
+  @apply bg-gray-900 text-gray-100 antialiased;
+}
+
+* {
   box-sizing: border-box;
-  color:white;
 }
-*::placeholder{
-color:gray;
-margin-left: 10px;
+
+input[type="search"]::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+  appearance: none;
 }
-.postCardActions{
-  @apply absolute  left-0 top-0 w-full h-full border;
-  background: rgba(0, 0, 0, 0.617)
+
+/* Custom scrollbar for snippet preview */
+.snippet-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+
+.snippet-scroll::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+
+.snippet-scroll::-webkit-scrollbar-thumb {
+  @apply bg-gray-700 rounded-full hover:bg-gray-600 transition-colors;
 }
