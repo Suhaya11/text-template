@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { decrypt } from "@/app/lib/session";
+import { verifyToken } from "@/lib/auth";
 import { cookies } from "next/headers";
 
 // 1. Specify protected and public routes
@@ -12,9 +12,9 @@ export default async function proxy(req) {
   const isProtectedRoute = protectedRoutes.includes(path);
   const isPublicRoute = publicRoutes.includes(path);
 
-  // 3. Decrypt the session from the cookie
-  const cookie = (await cookies()).get("session")?.value;
-  const session = await decrypt(cookie);
+  // 3. Verify the session from the cookie
+  const cookie = (await cookies()).get("token")?.value;
+  const session = cookie ? await verifyToken(cookie) : null;
 
   // 5. Redirect to /login if the user is not authenticated
   if (isProtectedRoute && !session?.userId) {
