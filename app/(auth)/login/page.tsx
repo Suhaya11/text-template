@@ -1,34 +1,34 @@
 "use client";
 
-import { useState } from 'react';
-import { useRouter } from 'next/navigation';
-import Link from 'next/link';
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export default function LoginPage() {
-  const [ugNumber, setUgNumber] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+  const [ugNumber, setUgNumber] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const router = useRouter();
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    setError('');
+    setError("");
 
     try {
-      const res = await fetch('/api/auth/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+      const res = await fetch("/api/auth/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ ugNumber, password }),
       });
 
       const data = await res.json();
       if (!res.ok) {
-        throw new Error(data.error || 'Login failed');
+        throw new Error(data.error || "Login failed");
       }
 
-      router.push('/');
+      router.push("/dashboard");
       router.refresh();
     } catch (err: any) {
       setError(err.message);
@@ -40,8 +40,12 @@ export default function LoginPage() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-zinc-50 dark:bg-zinc-950 px-4">
       <div className="max-w-md w-full bg-white dark:bg-zinc-900 p-8 rounded-2xl shadow-sm border border-zinc-200 dark:border-zinc-800">
-        <h1 className="text-2xl font-bold text-center text-zinc-900 dark:text-white mb-2">Welcome Back</h1>
-        <p className="text-center text-zinc-500 dark:text-zinc-400 mb-8">Connect with your ADUST colleagues</p>
+        <h1 className="text-2xl font-bold text-center text-zinc-900 dark:text-white mb-2">
+          Welcome Back
+        </h1>
+        <p className="text-center text-zinc-500 dark:text-zinc-400 mb-8">
+          Connect with your ADUST colleagues
+        </p>
 
         <form onSubmit={handleLogin} className="space-y-6">
           {error && (
@@ -82,13 +86,16 @@ export default function LoginPage() {
             disabled={loading}
             className="w-full py-2 bg-green-600 hover:bg-green-700 text-white font-semibold rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            {loading ? 'Logging in...' : 'Log In'}
+            {loading ? "Logging in..." : "Log In"}
           </button>
         </form>
 
         <p className="mt-6 text-center text-sm text-zinc-600 dark:text-zinc-400">
-          New to ADUST Connect?{' '}
-          <Link href="/signup" className="text-green-600 hover:underline font-medium">
+          New to ADUST Connect?{" "}
+          <Link
+            href="/signup"
+            className="text-green-600 hover:underline font-medium"
+          >
             Sign Up
           </Link>
         </p>
