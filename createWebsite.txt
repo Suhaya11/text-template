@@ -1,0 +1,19 @@
+I'm final year student at Aliko Dangote University Of Science and technology Wudil i want to create a website for my colligues to be in touch after graduation 
+i want to you to create a website for me with 
+1. ligth and dark mode switching 
+2. signup page with fields of name: U.G Number: dateofBirth: and any other relevance fields migth be important for identifications 
+3. login page that uses ug number and password to login 
+4. chart feature in which everyone can messege anyone if 
+5. friend adding features or following
+6. articles or posting feature in which everyone can post and it will be visible to his class members and this friends from other departments
+7. the ability of users to add thier profile pictures and pictures in post or article
+8. the ability of user to react ,comment or repost the post 
+9. the ability of users to report frauds or insult to the authority 
+10. admin pannel with suhaya as username and sulaiman as password and the ability to change it after some times
+11. the ability of admin to remove any post or person that can couse the problem to the community 
+12. the beutifull logo for the application and the ability of admin to change the logo 
+13. any other recomendations you migth give 
+14. I've added the connection string to my env file even if its now there complete the all logic so that ill only add it to the env and im using mongo atlas if there is any additional advise that you migth give add it to Advices.txt
+15. assumes all action as accepted so donot ask me any action unless if it require password 
+thanks is suhaya 
+
