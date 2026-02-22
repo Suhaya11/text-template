@@ -21,12 +21,7 @@ export async function POST(req: Request) {
 
     const isValid = await comparePassword(password, user.password);
     if (!isValid) {
-      // Special case for initial admin if not yet created or credentials changed
-      if (ugNumber === 'suhaya' && password === 'sulaiman' && user.role === 'admin') {
-         // Fallback if needed or if suhaya/sulaiman was used to create the admin
-      } else {
-        return NextResponse.json({ error: 'Invalid credentials' }, { status: 401 });
-      }
+      return NextResponse.json({ error: 'Invalid credentials' }, { status: 401 });
     }
 
     const token = await createToken({
@@ -51,6 +46,7 @@ export async function POST(req: Request) {
 
     return response;
   } catch (error: any) {
+    console.error("Login Error:", error);
     return NextResponse.json({ error: error.message || 'Something went wrong' }, { status: 500 });
   }
 }

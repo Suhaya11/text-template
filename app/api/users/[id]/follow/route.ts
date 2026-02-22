@@ -1,7 +1,15 @@
 import { NextResponse } from "next/server";
-import connectDB from "@/lib/db";
-import User from "@/lib/models/User";
-import { getSession } from "@/lib/auth";
+
+// Mock session and users using localStorage/globalThis
+function getSessionMock() {
+  // For demo: always return a mock user as logged in
+  return globalThis.localSession || null;
+}
+
+function getLocalUsers() {
+  if (!globalThis.localUsers) globalThis.localUsers = [];
+  return globalThis.localUsers;
+}
 
 export async function POST(
   req: Request,
@@ -9,7 +17,7 @@ export async function POST(
 ) {
   const { id } = await params;
   try {
-    const session = await getSession();
+    const session = getSessionMock();
     if (!session)
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
@@ -20,13 +28,16 @@ export async function POST(
       );
     }
 
-    await connectDB();
-    const targetUser = await User.findById(id);
-    const currentUser = await User.findById(session.id);
+    const users = getLocalUsers();
+    const targetUser = users.find((u: any) => u.id === id);
+    const currentUser = users.find((u: any) => u.id === session.id);
 
     if (!targetUser || !currentUser) {
       return NextResponse.json({ error: "User not found" }, { status: 404 });
     }
+
+    if (!currentUser.following) currentUser.following = [];
+    if (!targetUser.followers) targetUser.followers = [];
 
     const index = currentUser.following.indexOf(id);
     if (index === -1) {
@@ -41,9 +52,6 @@ export async function POST(
         targetUser.followers.splice(followerIndex, 1);
       }
     }
-
-    await currentUser.save();
-    await targetUser.save();
 
     return NextResponse.json({ message: "Success" });
   } catch (error: any) {

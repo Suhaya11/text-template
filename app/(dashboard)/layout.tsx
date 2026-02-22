@@ -1,29 +1,37 @@
-import { getSession } from '@/lib/auth';
-import { redirect } from 'next/navigation';
-import Navbar from '@/components/Navbar';
-import connectDB from '@/lib/db';
-import User from '@/lib/models/User';
+"use client";
+import { useEffect, useState } from "react";
+import Navbar from "@/components/Navbar";
 
-export default async function DashboardLayout({
+export default function DashboardLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const session = await getSession();
+  const [session, setSession] = useState<any>(null);
+  const [users, setUsers] = useState<any[]>([]);
+  const [user, setUser] = useState<any>(null);
 
-  if (!session) {
-    redirect('/login');
-  }
+  useEffect(() => {
+    const sess = globalThis.localSession || null;
+    const usrs = globalThis.localUsers || [];
+    setSession(sess);
+    setUsers(usrs);
+    if (sess) {
+      const u = usrs.find((u: any) => u.id === sess.id);
+      setUser(u || null);
+    }
+  }, []);
 
-  await connectDB();
-  const user = await User.findById(session.id).select('-password');
+  useEffect(() => {
+    if (!session || !user) {
+      window.location.href = "/login";
+    }
+  }, [session, user]);
 
-  if (!user) {
-    redirect('/login');
-  }
+  if (!session || !user) return null;
 
   const userData = {
-    id: user._id.toString(),
+    id: user.id,
     name: user.name,
     ugNumber: user.ugNumber,
     role: user.role,
